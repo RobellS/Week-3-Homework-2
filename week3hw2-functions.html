@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Functions Homework</title>
+    
+
+<h1>Functions Homework</h1>
+
+
+
+</head>
+<body>
+<h2>Question #1: Define a function maxOfThree that takes three numbers as arguments and returns the largest of them.</h2>
+<p id="answer1">Answer #1 goes here</p>
+
+<h2>Question #2a: Create a function called celsiusToFahrenheit:
+
+    - Take a Celsius temperature from the user and convert it to Fahrenheit
+    
+    - Return string as output: "SOMETHING degrees Celsius is Something degrees Fahrenheit"</h2>
+<p id="answer2a">Answer #2a goes here</p>
+
+<h2>Question #2b: Create a function called fahrenheitToCelsius:
+
+    - Now take a Fahrenheit temperature from the user and convert it to Celsius
+    
+    - Return string as output: "SOMETHING degrees Fahrenheit is SOMETHING degrees Celsius"</h2>
+<p id="answer2b">Answer #2b goes here</p>
+
+<h2>Question #3: Create an array of at least five Student objects with the following properties: name, activity, gender
+
+    - Filter all those students who are into swimming
+    
+    - Filter all those students who are in the activity entered by the user. For example, if the user enters "Basketball" display only students with basketball as their activity </h2>
+<p id="answer3">Answer #3 goes here</p>
+
+<h2>Question #4: Traverse through an array (either number or string array) and display each value with their index position using Array.map method</h2>
+<p id="answer4">Answer #4 goes here</p>
+
+<!-- Bonus:Convert as many of the functions above into one-line arrow functions (which means no curly brackets and no explicit use of the return keyword) -->
+
+    <script>
+      let  arr1= [10,50,1000]
+//-------------------------------------------Question #1---------------------------------------//
+
+function maxOfThree (array)
+{
+    return Math.max.apply(Math, array)
+}
+
+largestnum = maxOfThree(arr1) 
+document.getElementById("answer1").innerHTML=`The largest number in ${arr1} is ${largestnum}.`
+//-------------------------------------------Question #2a---------------------------------------//
+
+let usertemp = prompt("Enter your temperature in Celsius here: ")
+
+function celsiusToFahrenheit (temp)
+{
+    return (temp * 1.8) + 32
+}
+
+let userconvertedtemp = Math.round(celsiusToFahrenheit (usertemp))
+
+document.getElementById("answer2a").innerHTML=`${usertemp}°C is also ${userconvertedtemp}°F.`
+
+//-------------------------------------------Question #2b---------------------------------------//
+let usertemp2 = prompt("Enter your temperature in Fahrenheit here: ")
+
+function fahrenheitToCelsius (temp)
+{
+    return  (temp-32)/1.8
+}
+
+let convertedtemp = Math.round(fahrenheitToCelsius(usertemp2))
+
+document.getElementById("answer2b").innerHTML=`${usertemp2}°F is also ${convertedtemp}°C.`
+
+//-------------------------------------------Question #3---------------------------------------//
+let userinput1 = prompt("Enter the activity (Basketball, Soccer, or Football) you are checking here: ").toLowerCase()
+
+let student1 = {firstName:"Robell", activity:"basketball", gender: "Male"};
+let student2 = {firstName:"Samantha", activity:"soccer", gender: "Female"};
+let student3 = {firstName:"James", activity:"football", gender: "Male"};
+let student4 = {firstName:"Julian", activity:"basketball", gender: "Male"};
+let student5 = {firstName:"Doug", activity:"basketball", gender: "Male"};
+let arr2= [student1,student2, student3,student4, student5]
+
+function checkActivity (element){
+    if (userinput1==element.activity)
+    {
+        console.log(element.firstName)
+        return (element.firstName)
+    }};
+function arrSwitch(array)
+{
+      let filtered = "";
+      array.filter(student=> { if (student.activity == userinput1) {
+         if (filtered == "") {
+            filtered = filtered + " "+ student.firstName;}
+        else { 
+         filtered = filtered + ","+ " "+ student.firstName;}
+      }})
+      return filtered
+}
+document.getElementById("answer3").innerHTML=`${userinput1} is enjoyed by ${arrSwitch(arr2)}.`
+//-------------------------------------------Question #4---------------------------------------//
+
+const arr3 = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+
+const indexedArray = arr3.map((object, index) => { return " " + object + " " +"["+ index + "]" ;});
+
+document.getElementById("answer4").innerHTML=`All objects in the array w/ index position: ${indexedArray}`
+    </script>
+
+</body>
+</html>
